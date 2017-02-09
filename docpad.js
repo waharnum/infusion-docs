@@ -13,7 +13,7 @@ var URI = require("URIjs");
 var path = require("path");
 var fs = require("fs-extra");
 
-var docsVersion = "development";
+var docsVersion = "v2.0.0";
 
 // The documentation root on GitHub:
 // Used to build URLs for "Edit on GitHub" links
