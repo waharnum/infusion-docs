@@ -3,16 +3,17 @@ FROM node:10-alpine AS builder
 # Add OS-level dependencies
 RUN apk add --no-cache git
 
-# Switch to regular user
-USER node
+# Install docpad globally at a working version
+
+RUN npm install -g docpad@6.79.4
 
 # Install npm dependencies
-COPY --chown=node package.json /app/package.json
+COPY package.json /app/package.json
 WORKDIR /app
 RUN npm install
 
 # Build and test website
-COPY --chown=node . /app
+COPY . /app
 RUN $(npm bin)/grunt lint
 RUN npm test
 
